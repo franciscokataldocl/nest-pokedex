@@ -7,7 +7,15 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
   whitelist: true,
-  forbidNonWhitelisted: true, })
+  forbidNonWhitelisted: true,
+  //esto es para transformar los valores de los DTO
+  //EJEMPLO envio limit=100 por quuery params y eso seria un string
+  //entonces nest transforma ese dto en NUMBER
+transform: true,
+transformOptions: {
+  enableImplicitConversion: true,
+}
+})
   );
 
   app.setGlobalPrefix('api');
