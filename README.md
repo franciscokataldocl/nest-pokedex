@@ -28,7 +28,6 @@ docker-compose up -d
 yarn start:dev
 ```
 
-
 ## Stack usado
 * MongoDB
 * Nest

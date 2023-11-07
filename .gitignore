@@ -3,7 +3,9 @@
 /node_modules
 /mongo
 
+#customs
 /chuleta.md
+.env
 
 # Logs
 logs
