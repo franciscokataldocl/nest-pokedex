@@ -5,14 +5,18 @@ import { CommonModule } from './common/common.module';
 import { SeedModule } from './seed/seed.module';
 import { ConfigModule } from '@nestjs/config';
 import { EnvConfig } from './config/app.config';
+import { JoiVlidationSchema } from './config/joi.validation';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      load: [EnvConfig]
+      load: [EnvConfig],
+      validationSchema: JoiVlidationSchema,
     }),
     PokemonModule,
-    MongooseModule.forRoot(process.env.MONGODB),
+    MongooseModule.forRoot(process.env.MONGODB,{
+      dbName: 'pokemonsdb'
+    }),
     CommonModule,
     SeedModule,
   ],
@@ -20,7 +24,7 @@ import { EnvConfig } from './config/app.config';
   providers: [],
 })
 export class AppModule {
-  // constructor() {
-  //   console.log(process.env)
-  // }
+  constructor() {
+    console.log(`app running on por ${process.env.PORT}`)
+  }
 }
